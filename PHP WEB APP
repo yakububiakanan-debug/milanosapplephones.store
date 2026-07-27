@@ -1,0 +1,15 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $name = htmlspecialchars($_POST['name']);
+    $number = htmlspecialchars($_POST['number']);
+    $amount = htmlspecialchars($_POST['amount']);
+
+    // Save to a file
+    $data = date('Y-m-d H:i:s') . " | Name: $name | Number: $number | Amount: $amount\n";
+    file_put_contents("payments.txt", $data, FILE_APPEND);
+
+    // Feedback to user
+    echo "<p style='textalign:center; color:green;'>Payment confirmed. Thank you, $name!</p> - PHP WEB APP:12";
+    echo "<p style='textalign:center;'><a href='index.html'>Go back</a></p> - PHP WEB APP:13";
+}
+?>
